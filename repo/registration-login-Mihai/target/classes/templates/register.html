@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration and Login</title>
+</head>
+    <body>
+
+        <a th:href="@{/}">My final app</a>
+
+        <br/>
+        <br/>
+        <br/>
+
+        <div th:if="${param.success}">
+            <div>You've successfully registered to our app!</div>
+        </div>
+
+        <h2>Registration</h2>
+
+
+        <form method="post" role="form" th:action="@{/register/save}" th:object="${user}">
+
+
+            <label>First Name</label>
+            <input id="firstName"
+                   name="firstName"
+                   placeholder="Enter first name"
+                   th:field="*{firstName}"
+                   type="text"/>
+            <p th:errors="*{firstName}"
+               th:if="${#fields.hasErrors('firstName')}">
+            </p>
+
+            <br/>
+            <br/>
+
+            <label>Last Name</label>
+            <input id="lastName"
+                   name="lastName"
+                   placeholder="Enter last name"
+                   th:field="*{lastName}"
+                   type="text"/>
+
+            <p th:errors="*{lastName}"
+               th:if="${#fields.hasErrors('lastName')}">
+            </p>
+            <br/>
+            <br/>
+
+            <label>Email</label>
+            <input id="email"
+                   name="email"
+                   placeholder="Enter email address"
+                   th:field="*{email}"
+                   type="email"/>
+
+            <p th:errors="*{email}"
+               th:if="${#fields.hasErrors('email')}">
+            </p>
+            <br/>
+            <br/>
+
+            <label>Password</label>
+            <input id="password"
+                   name="password"
+                   placeholder="Enter password"
+                   th:field="*{password}"
+                   type="password"/>
+
+            <p th:errors="*{password}"
+               th:if="${#fields.hasErrors('password')}">
+            </p>
+
+            <br/>
+            <br/>
+
+            <button type="submit">Register</button>
+            <br/>
+            <br/>
+            <span>Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
+
+        </form>
+
+    </body>
+</html>

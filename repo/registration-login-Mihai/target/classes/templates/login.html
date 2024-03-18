@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Registration and Login</title>
+    </head>
+    <body>
+        <a th:href="@{/}">My final app</a>
+        <br/>
+        <br/>
+        <br/>
+
+        <div th:if="${param.error}">
+            <div>Invalid Email and Password.</div>
+        </div>
+        <div th:if="${param.logout}">
+            <div>You have been logged out.</div>
+        </div>
+
+        <h3>Login Form</h3>
+
+
+        <form method="post"
+              th:action="@{/login}"
+              role="form">
+
+
+            <label for="username">Email *</label>
+            <input type="text"
+                   id="username"
+                   name="username"
+                   placeholder="Email"/>
+            <br/>
+            <br/>
+            <label for="password">Password *</label>
+            <input type="password"
+                   id="password"
+                   name="password"
+                   placeholder="Password"/>
+            <br/>
+            <br/>
+            <button type="submit">Login</button>
+            <br/>
+            <br/>
+
+            <span> Not registered?<a th:href="@{/register}"> Register/SignUp Here</a></span>
+
+        </form>
+    </body>
+</html>
